@@ -1,11 +1,10 @@
 
 # DreamTeamProject
-<div display= "flex" justify-content= "space-between">
-<h1 align="right">
-  <img src="dotnet_logo.png" width="50" title="hover text">
-</h1> 
-<h1  align="left" text-decoration="double">Aplikacja obsługi domowej biblioteki</h1>
+<div display="flex" justify-content="space-between">
+  <img src="dotnet_logo.png" width="50">
+  <h1>Aplikacja obsługi domowej biblioteki</h1>
 </div>
+
 <h2>Zagadnienia obejmujące zadanie:</h2>
 <ul>
 <li>Html5, CSS, Bootstrap i ASP MVC Core</li>
