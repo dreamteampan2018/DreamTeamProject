@@ -1,7 +1,7 @@
 
-# DreamTeamProject @octocat :+1:
+# DreamTeamProject :+1:
 
-  <img src="dotnet_logo.png" width="420" height="250" margin ="0 auto" >
+  <p align="center"><img src="dotnet_logo.png" width="420" height="250" margin ="0 auto" ></p>
   <h1>Aplikacja obsługi domowej biblioteki</h1>
 
 
