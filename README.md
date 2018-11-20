@@ -1,4 +1,8 @@
 # DreamTeamProject
+<p align="center">
+  <img src="dotnet_logo.png" width="350" title="hover text">
+ 
+</p>
 <h1>Aplikacja obsługi domowej biblioteki</h1>
 
 <h2>Zagadnienia obejmujące zadanie:</h2>
@@ -64,9 +68,7 @@
 <li> Formularz logowania </li>
 </ul>
 
-
-
-<li> Tryb edycji:</li>
+<br><li> Tryb edycji:</li>
 <ul>
 <li> Dodawanie nowych elementów do biblioteki</li>
 <ul>
@@ -82,7 +84,7 @@
 <li> Opcjonalnie: okładka
 </ul>
 
-<br><li> Wykorzystać Usługi Azure Cognitive Services do rozpoznania tytułu utworu na podstawie zdjęcia</li>
+<li> Wykorzystać Usługi Azure Cognitive Services do rozpoznania tytułu utworu na podstawie zdjęcia</li>
 </ul>
 
 
@@ -105,6 +107,6 @@
 <li> Lista niedostępnych elementów z uwzględnieniem kto i kiedy ustawił im status na niedostępny</li>
 </ul></ul></ul>
 
-<strong>Dane tekstowe dotyczące każdego elementu biblioteki (Tytuł, Rok....) powinny być przechowywane w bazie danych SQL
+<strong><italic>Dane tekstowe dotyczące każdego elementu biblioteki (Tytuł, Rok....) powinny być przechowywane w bazie danych SQL
 Dane binarne np: obrazy powinny być przechowywane w Azure Blob Storage
-Aplikacja powinna być wgrana na usługę Azure </strong>
+Aplikacja powinna być wgrana na usługę Azure. </strong></italic>
