@@ -46,6 +46,7 @@
 </ul>
 
 <li> Wyświetlenie detali elementu</li>
+
 <li> Panel podglądu szczegółów elementu</li>
 
 <ul>
