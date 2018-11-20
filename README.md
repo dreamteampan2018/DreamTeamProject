@@ -40,15 +40,14 @@
 <li> Książka</li>
 </ul></ul>
 
-<li> Lista wyników (każdy element tylko overview)</li>
+<br><li> Lista wyników (każdy element tylko overview)</li>
 <ul>
 <li> Po kliknięciu w element widoczne szczegóły elementu</li>
 </ul>
 
 <li> Wyświetlenie detali elementu</li>
 
-
-<li> Panel podglądu szczegółów elementu</li>
+<br><li> Panel podglądu szczegółów elementu</li>
 
 <ul>
 <li> Pola do odczytu:</li>
@@ -83,7 +82,7 @@
 <li> Opcjonalnie: okładka
 </ul>
 
-<li> Wykorzystać Usługi Azure Cognitive Services do rozpoznania tytułu utworu na podstawie zdjęcia</li>
+<br><li> Wykorzystać Usługi Azure Cognitive Services do rozpoznania tytułu utworu na podstawie zdjęcia</li>
 </ul>
 
 
@@ -96,8 +95,7 @@
 <li> Zmiana statusu na „na półce” kasuje powyższe informacje</li>
 </ul>
 
-
-<li> Podgląd statystyki (podstawowy raport):</li>
+<br><li> Podgląd statystyki (podstawowy raport):</li>
 
 <ul>
 <li> Ilość elementów ogółem</li>
