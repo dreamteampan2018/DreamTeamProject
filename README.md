@@ -47,6 +47,7 @@
 
 <li> Wyświetlenie detali elementu</li>
 
+
 <li> Panel podglądu szczegółów elementu</li>
 
 <ul>
@@ -63,6 +64,8 @@
 <li> Formularz rejestracji nowego użytkownika</li>
 <li> Formularz logowania </li>
 </ul>
+
+
 
 <li> Tryb edycji:</li>
 <ul>
@@ -83,6 +86,7 @@
 <li> Wykorzystać Usługi Azure Cognitive Services do rozpoznania tytułu utworu na podstawie zdjęcia</li>
 </ul>
 
+
 <li> Zmiana statusu elementu (na półce/wypożyczony)</li>
 
 <ul>
@@ -91,6 +95,7 @@
 <li> Zmiana statusu na wypożyczony zapamiętuje kto dokonał zmiany statusu</li>
 <li> Zmiana statusu na „na półce” kasuje powyższe informacje</li>
 </ul>
+
 
 <li> Podgląd statystyki (podstawowy raport):</li>
 
