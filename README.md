@@ -1,8 +1,9 @@
-# DreamTeamProject
+
 <p align="right">
-  <img src="dotnet_logo.png" width="70" title="hover text">
+  <img src="dotnet_logo.png" width="90" title="hover text">
 </p>
-<h1>Aplikacja obsługi domowej biblioteki</h1>
+# DreamTeamProject
+<h1 text-decoration-style="double">Aplikacja obsługi domowej biblioteki</h1>
 
 <h2>Zagadnienia obejmujące zadanie:</h2>
 <ul>
