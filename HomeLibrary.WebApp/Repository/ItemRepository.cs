@@ -43,12 +43,12 @@ namespace HomeLibrary.WebApp.Repository
             context.Items.Remove(toDelete);
         }
 
-        public Item GetItemById(int itemId)
+        public async  Task<Item> GetItemByIdAsync(int itemId)
         {
             return context.Items.Find(itemId);
         }
 
-        public IEnumerable<Item> GetItems()
+        public async Task<IEnumerable<Item>> GetItemsAsync()
         {
             return context.Items.ToList();
         }
@@ -59,9 +59,9 @@ namespace HomeLibrary.WebApp.Repository
             return item;
         }
 
-        public void Save()
+        public async Task SaveAsync()
         {
-            context.SaveChanges();
+            context.SaveChangesAsync();
         }
 
         public void UpdateItem(Item item)

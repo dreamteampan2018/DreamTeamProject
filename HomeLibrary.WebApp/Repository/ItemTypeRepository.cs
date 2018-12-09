@@ -42,12 +42,12 @@ namespace HomeLibrary.WebApp.Repository
             GC.SuppressFinalize(this);
         }
 
-        public ItemType GetItemTypeById(int itemTypeId)
+        public async Task<ItemType> GetItemTypeByIdAsync(int itemTypeId)
         {
             return context.ItemTypes.Find(itemTypeId);
         }
 
-        public IEnumerable<ItemType> GetItemTypes()
+        public async Task<IEnumerable<ItemType>> GetItemTypesAsync()
         {
             return context.ItemTypes.ToList();
         }
@@ -57,9 +57,9 @@ namespace HomeLibrary.WebApp.Repository
             context.ItemTypes.Add(itemType);
         }
 
-        public void Save()
+        public async Task SaveAsync()
         {
-            context.SaveChanges();
+            context.SaveChangesAsync();
         }
 
         public void UpdateItemType(ItemType itemType)

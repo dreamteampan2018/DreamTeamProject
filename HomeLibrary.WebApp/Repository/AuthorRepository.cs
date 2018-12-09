@@ -17,6 +17,7 @@ namespace HomeLibrary.WebApp.Repository
         {
             this.context = context;
         }
+
         protected virtual void Dispose(bool disposing)
         {
             if (!this.disposed)
@@ -43,12 +44,12 @@ namespace HomeLibrary.WebApp.Repository
 
        
 
-        public Author GetAuthorById(int authorId)
+        public async Task<Author> GetAuthorByIdAsync(int authorId)
         {
             return context.Authors.Find(authorId);
         }
 
-        public IEnumerable<Author> GetAuthors()
+        public async Task<IEnumerable<Author>> GetAuthorsAsync()
         {
             return context.Authors.ToList();
         }
@@ -59,13 +60,15 @@ namespace HomeLibrary.WebApp.Repository
             return author;
         }
 
-        public void Save()
+        public async Task SaveAsync()
         {
-            context.SaveChanges();
+            context.SaveChangesAsync();
         }
 
         public void UpdateAuthor(Author author)
         {
+            
+
             context.Entry(author).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
         }
     }

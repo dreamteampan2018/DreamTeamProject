@@ -75,3 +75,13 @@ C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug
 C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Authors\Details.g.cshtml.cs
 C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Authors\Edit.g.cshtml.cs
 C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Authors\Index.g.cshtml.cs
+C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\Razor\Views\ItemTypes\Create.g.cshtml.cs
+C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\Razor\Views\ItemTypes\Delete.g.cshtml.cs
+C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\Razor\Views\ItemTypes\Details.g.cshtml.cs
+C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\Razor\Views\ItemTypes\Edit.g.cshtml.cs
+C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\Razor\Views\ItemTypes\Index.g.cshtml.cs
+C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Items\Create.g.cshtml.cs
+C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Items\Delete.g.cshtml.cs
+C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Items\Details.g.cshtml.cs
+C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Items\Edit.g.cshtml.cs
+C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Items\Index.g.cshtml.cs

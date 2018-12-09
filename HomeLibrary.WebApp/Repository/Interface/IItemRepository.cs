@@ -8,11 +8,11 @@ namespace HomeLibrary.WebApp.Repository.Interface
 {
     public interface IItemRepository:IDisposable
     {
-        IEnumerable<Item> GetItems();
-        Item GetItemById(int itemId);
+        Task<IEnumerable<Item>> GetItemsAsync();
+        Task<Item> GetItemByIdAsync(int itemId);
         Item InsertItem(Item item);
         void DeleteItem(int itemId);
         void UpdateItem(Item item);
-        void Save();
+        Task SaveAsync();
     }
 }

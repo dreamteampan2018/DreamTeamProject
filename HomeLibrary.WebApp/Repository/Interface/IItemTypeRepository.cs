@@ -8,11 +8,11 @@ namespace HomeLibrary.WebApp.Repository.Interface
 {
     public interface IItemTypeRepository:IDisposable
     {
-        IEnumerable<ItemType> GetItemTypes();
-        ItemType GetItemTypeById(int itemTypeId);
+        Task<IEnumerable<ItemType>> GetItemTypesAsync();
+        Task<ItemType> GetItemTypeByIdAsync(int itemTypeId);
         void InsertItemType(ItemType itemType);
         void DeleteItemType(int itemTypeId);
         void UpdateItemType(ItemType itemType);
-        void Save();
+        Task SaveAsync();
     }
 }

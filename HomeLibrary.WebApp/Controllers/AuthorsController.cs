@@ -7,34 +7,31 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HomeLibrary.DatabaseModel;
 using HomeLibrary.WebApp.Data;
+using HomeLibrary.WebApp.Repository;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HomeLibrary.WebApp.Controllers
 {
     public class AuthorsController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly AuthorRepository repository;
 
         public AuthorsController(ApplicationDbContext context)
         {
-            _context = context;
+            repository =  new AuthorRepository(context);
         }
 
-        // GET: Authors
+        
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Authors.ToListAsync());
+            return View(await repository.GetAuthorsAsync());
         }
 
         // GET: Authors/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            var author = await _context.Authors
-                .FirstOrDefaultAsync(m => m.AuthorId == id);
+            var author = await repository.GetAuthorByIdAsync(id);
             if (author == null)
             {
                 return NotFound();
@@ -43,37 +40,31 @@ namespace HomeLibrary.WebApp.Controllers
             return View(author);
         }
 
-        // GET: Authors/Create
+        [Authorize]
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Authors/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Create([Bind("AuthorId,Name,Surname")] Author author)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(author);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
+           // if (ModelState.IsValid)
+           // {
+           //     _context.Add(author);
+            //    await _context.SaveChangesAsync();
+            //    return RedirectToAction(nameof(Index));
+           // }
             return View(author);
         }
 
-        // GET: Authors/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        [Authorize]
+        public async Task<IActionResult> Edit(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var author = await _context.Authors.FindAsync(id);
+           var author = await repository.GetAuthorByIdAsync(id);
             if (author == null)
             {
                 return NotFound();
@@ -81,11 +72,9 @@ namespace HomeLibrary.WebApp.Controllers
             return View(author);
         }
 
-        // POST: Authors/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+          [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("AuthorId,Name,Surname")] Author author)
         {
             if (id != author.AuthorId)
@@ -97,8 +86,8 @@ namespace HomeLibrary.WebApp.Controllers
             {
                 try
                 {
-                    _context.Update(author);
-                    await _context.SaveChangesAsync();
+               //     _context.Update(author);
+                    await repository.SaveAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -116,16 +105,15 @@ namespace HomeLibrary.WebApp.Controllers
             return View(author);
         }
 
-        // GET: Authors/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        [Authorize]
+        public async Task<IActionResult> Delete(int id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            var author = await _context.Authors
-                .FirstOrDefaultAsync(m => m.AuthorId == id);
+            var author = await repository.GetAuthorByIdAsync(id);
             if (author == null)
             {
                 return NotFound();
@@ -139,15 +127,26 @@ namespace HomeLibrary.WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var author = await _context.Authors.FindAsync(id);
-            _context.Authors.Remove(author);
-            await _context.SaveChangesAsync();
+            var author = await repository.GetAuthorByIdAsync(id);
+
+            if (author != null)
+            {
+                repository.DeleteAuthor(id);
+                await repository.SaveAsync();
+            }
             return RedirectToAction(nameof(Index));
         }
 
         private bool AuthorExists(int id)
         {
-            return _context.Authors.Any(e => e.AuthorId == id);
+            if (repository.GetAuthorByIdAsync(id).Result!=null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

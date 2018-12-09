@@ -8,11 +8,11 @@ namespace HomeLibrary.WebApp.Repository.Interface
 {
     public interface IAuthorRepository:IDisposable
     {
-        IEnumerable<Author> GetAuthors();
-        Author GetAuthorById(int authorId);
+        Task<IEnumerable<Author>> GetAuthorsAsync();
+        Task<Author> GetAuthorByIdAsync(int authorId);
         Author InsertAuthor(Author author);
         void DeleteAuthor(int authorId);
         void UpdateAuthor(Author author);
-        void Save();
+        Task SaveAsync();
     }
 }
