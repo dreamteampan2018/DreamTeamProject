@@ -1,0 +1,26 @@
+﻿@model HomeLibrary.WebApp.HelperClass.SearchPosition
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Result", "Search", FormMethod.Post))
+{
+
+<div>
+    Last Name:<br>
+    <select id="TypeId" name="TypeId" style="width: 200px">
+        <option selected="selected" value="1">Książka</option>
+        <option value="2">Płyta CD</option>
+        <option value="3">Płyta DVD</option>
+    </select>
+    <input id="Title"  name="Title" type="text" runat="server" style="width: 400px" />
+    <input id="Author" name="Author" type="text" runat="server" style="width: 400px" />
+    <input type="submit" id="submitId" value="submit" />
+</div>
+
+}
+
+
+

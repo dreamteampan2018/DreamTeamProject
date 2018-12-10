@@ -14,5 +14,6 @@ namespace HomeLibrary.WebApp.Repository.Interface
         void DeleteItem(int itemId);
         void UpdateItem(Item item);
         Task SaveAsync();
+        List<Item> Search(int typeId, string title, string author);
     }
 }

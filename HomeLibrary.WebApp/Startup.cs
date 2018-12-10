@@ -15,6 +15,8 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace HomeLibrary.WebApp
 {
+    
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -23,16 +25,19 @@ namespace HomeLibrary.WebApp
         }
 
         public IConfiguration Configuration { get; }
-
+        public string AzureConnectionString { get; private set; }
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
+            AzureConnectionString=Configuration.GetConnectionString("StorageConnectionString");
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(

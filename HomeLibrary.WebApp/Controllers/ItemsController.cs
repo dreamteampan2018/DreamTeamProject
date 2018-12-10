@@ -7,6 +7,10 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HomeLibrary.DatabaseModel;
 using HomeLibrary.WebApp.Data;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using HomeLibrary.WebApp.Repository;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HomeLibrary.WebApp.Controllers
 {
@@ -14,9 +18,12 @@ namespace HomeLibrary.WebApp.Controllers
     {
         private readonly ApplicationDbContext _context;
 
+        private readonly ItemRepository repository;
+
         public ItemsController(ApplicationDbContext context)
         {
             _context = context;
+            repository = new ItemRepository(context);
         }
 
         // GET: Items
@@ -47,6 +54,7 @@ namespace HomeLibrary.WebApp.Controllers
         }
 
         // GET: Items/Create
+        [Authorize]
         public IActionResult Create()
         {
             ViewData["AuthorId"] = new SelectList(_context.Authors, "AuthorId", "AuthorId");
@@ -54,9 +62,6 @@ namespace HomeLibrary.WebApp.Controllers
             return View();
         }
 
-        // POST: Items/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ItemId,Title,ItemTypeId,AuthorId,Description,YearPublishment,Borrowed,CoverGuid")] Item item)
@@ -73,13 +78,14 @@ namespace HomeLibrary.WebApp.Controllers
         }
 
         // GET: Items/Edit/5
+        [Authorize]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-
+             
             var item = await _context.Items.FindAsync(id);
             if (item == null)
             {
@@ -89,12 +95,9 @@ namespace HomeLibrary.WebApp.Controllers
             ViewData["ItemTypeId"] = new SelectList(_context.ItemTypes, "ItemTypeId", "ItemTypeId", item.ItemTypeId);
             return View(item);
         }
-
-        // POST: Items/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("ItemId,Title,ItemTypeId,AuthorId,Description,YearPublishment,Borrowed,CoverGuid")] Item item)
         {
             if (id != item.ItemId)
@@ -128,6 +131,7 @@ namespace HomeLibrary.WebApp.Controllers
         }
 
         // GET: Items/Delete/5
+        [Authorize]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -150,6 +154,7 @@ namespace HomeLibrary.WebApp.Controllers
         // POST: Items/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var item = await _context.Items.FindAsync(id);
@@ -158,9 +163,45 @@ namespace HomeLibrary.WebApp.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+
+        [HttpPost("UploadFiles")]
+        public async Task<IActionResult> PostFile(List<IFormFile> files,int itemId)
+        {
+            var uploadSuccess = false;
+
+            foreach (var formFile in files)
+            {
+                if (formFile.Length <= 0)
+                {
+                    continue;
+                }
+                using (var stream = formFile.OpenReadStream())
+                {
+                    uploadSuccess = await UploadToBlob(formFile.FileName, itemId, null, stream);
+                }
+            }
+
+            if (uploadSuccess)
+                return View("UploadSuccess");
+            else
+                return View("UploadError");
+        }
+
         private bool ItemExists(int id)
         {
             return _context.Items.Any(e => e.ItemId == id);
         }
+
+        private async Task<bool> UploadToBlob(string filename, int itemId, byte[] imageBuffer = null, Stream stream = null)
+        {
+            AzureRepository azure = new AzureRepository();
+            var uri= await azure.AddBlobToStorage(filename, imageBuffer,stream);
+            Item toChange = await repository.GetItemByIdAsync(itemId);
+            toChange.CoverGuid = uri;
+            repository.UpdateItem(toChange);
+            await repository.SaveAsync();
+            return true;
+        }
+
     }
 }

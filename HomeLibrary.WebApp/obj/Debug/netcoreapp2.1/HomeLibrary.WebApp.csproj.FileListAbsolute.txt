@@ -44,7 +44,6 @@ C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug
 C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\HomeLibrary.WebApp.csproj.CoreCompileInputs.cache
 C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\HomeLibrary.WebApp.RazorAssemblyInfo.cache
 C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\HomeLibrary.WebApp.RazorAssemblyInfo.cs
-C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
 C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\HomeLibrary.WebApp.AssemblyInfoInputs.cache
 C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\HomeLibrary.WebApp.AssemblyInfo.cs
 C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\HomeLibrary.WebApp.TagHelpers.input.cache
@@ -85,3 +84,6 @@ C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug
 C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Items\Details.g.cshtml.cs
 C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Items\Edit.g.cshtml.cs
 C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Items\Index.g.cshtml.cs
+C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Search\Index.g.cshtml.cs
+C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Search\Result.g.cshtml.cs

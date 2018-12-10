@@ -68,5 +68,20 @@ namespace HomeLibrary.WebApp.Repository
         {
             context.Entry(item).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
         }
+
+        public List<Item> Search(int typeId, string title, string author)
+        {
+            var query = from items in context.Items
+                        where
+                        (
+                            items.Author.Name == author ||
+                            items.Title == title ||
+                            items.Author.Surname == author ||
+                            items.ItemType.ItemTypeId == typeId
+                        )
+                        select items;
+
+            return query.ToList();
+        }
     }
 }

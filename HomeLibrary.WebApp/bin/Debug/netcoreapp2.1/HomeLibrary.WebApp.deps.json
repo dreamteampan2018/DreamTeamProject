@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "f01db7b0998f6660bbb64850f677e6890443decd"
+    "signature": "6eb14938a2d608ea623fe424f5129d82fa941ea2"
   },
   "compilationOptions": {
     "defines": [
@@ -27,6 +27,7 @@
           "HomeLibrary.DatabaseModel": "1.0.0",
           "Microsoft.AspNetCore.App": "2.1.1",
           "Microsoft.AspNetCore.Razor.Design": "2.1.2",
+          "Microsoft.Azure.Storage.Blob": "9.4.1",
           "Microsoft.NETCore.App": "2.1.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.1.6",
           "bootstrap": "4.1.3"
@@ -46,6 +47,54 @@
       },
       "jQuery/3.0.0": {},
       "Microsoft.AspNetCore.Razor.Design/2.1.2": {},
+      "Microsoft.Azure.KeyVault.Core/2.0.4": {
+        "dependencies": {
+          "System.Runtime": "4.3.0",
+          "System.Threading.Tasks": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.5/Microsoft.Azure.KeyVault.Core.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.4.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard1.5/Microsoft.Azure.KeyVault.Core.dll": {}
+        }
+      },
+      "Microsoft.Azure.Storage.Blob/9.4.1": {
+        "dependencies": {
+          "Microsoft.Azure.KeyVault.Core": "2.0.4",
+          "Microsoft.Azure.Storage.Common": "9.4.1",
+          "NETStandard.Library": "2.0.3",
+          "Newtonsoft.Json": "11.0.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Azure.Storage.Blob.dll": {
+            "assemblyVersion": "9.4.1.0",
+            "fileVersion": "9.4.1.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Azure.Storage.Blob.dll": {}
+        }
+      },
+      "Microsoft.Azure.Storage.Common/9.4.1": {
+        "dependencies": {
+          "Microsoft.Azure.KeyVault.Core": "2.0.4",
+          "NETStandard.Library": "2.0.3",
+          "Newtonsoft.Json": "11.0.2"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Azure.Storage.Common.dll": {
+            "assemblyVersion": "9.4.1.0",
+            "fileVersion": "9.4.1.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Microsoft.Azure.Storage.Common.dll": {}
+        }
+      },
       "Microsoft.CodeAnalysis.CSharp.Workspaces/2.8.0": {
         "dependencies": {
           "Microsoft.CodeAnalysis.CSharp": "2.8.0",
@@ -3500,6 +3549,27 @@
       "sha512": "sha512-ab4+TZw3Sxqrr5TwrwVyABeQkhSxYMJXgG6yZw7T+r6Vz+hcOt+pK79o15ESG7kZvWAK9wRG7emnTIia5O6R1Q==",
       "path": "microsoft.aspnetcore.razor.design/2.1.2",
       "hashPath": "microsoft.aspnetcore.razor.design.2.1.2.nupkg.sha512"
+    },
+    "Microsoft.Azure.KeyVault.Core/2.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-sPXHgZewNi5Vh/ZVj2fKX83U86pNCcHo3HdlDHeka9KqSsrSIO0Q6hxEYlrZRjoZYns6z8eB1TqloiPD+D672g==",
+      "path": "microsoft.azure.keyvault.core/2.0.4",
+      "hashPath": "microsoft.azure.keyvault.core.2.0.4.nupkg.sha512"
+    },
+    "Microsoft.Azure.Storage.Blob/9.4.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-alLDq2v5boV7JnDTUR3CN9fxWUHiLvwZBmlsHK8glc9nRHYOy/POP8Rbg1nDgQLXatmmgcLvAaRMR4H010P9Xw==",
+      "path": "microsoft.azure.storage.blob/9.4.1",
+      "hashPath": "microsoft.azure.storage.blob.9.4.1.nupkg.sha512"
+    },
+    "Microsoft.Azure.Storage.Common/9.4.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3l+bdncaKY0SXarQq8jA4U6vfowrsBl7wSaMOBxou/djtr08VAJAF5dFh5tVJPQpvUacQlwLsmwWteJTY26iJw==",
+      "path": "microsoft.azure.storage.common/9.4.1",
+      "hashPath": "microsoft.azure.storage.common.9.4.1.nupkg.sha512"
     },
     "Microsoft.CodeAnalysis.CSharp.Workspaces/2.8.0": {
       "type": "package",

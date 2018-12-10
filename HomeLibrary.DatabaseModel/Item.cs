@@ -15,6 +15,6 @@ namespace HomeLibrary.DatabaseModel
         public string Description { get; set; }
         public int YearPublishment { get; set; }
         public bool Borrowed { get; set; }
-        public Guid CoverGuid { get; set; }
+        public string CoverGuid { get; set; }
     }
 }
