@@ -57,6 +57,7 @@ namespace HomeLibrary.WebApp.Repository
         public Author InsertAuthor(Author author)
         {
             context.Authors.Add(author);
+            SaveAsync();
             return author;
         }
 

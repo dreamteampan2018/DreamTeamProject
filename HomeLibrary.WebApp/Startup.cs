@@ -37,7 +37,7 @@ namespace HomeLibrary.WebApp
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            AzureConnectionString=Configuration.GetConnectionString("StorageConnectionString");
+          //  AzureConnectionString=Configuration.GetConnectionString("StorageConnectionString");
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(

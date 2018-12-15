@@ -54,12 +54,16 @@ namespace HomeLibrary.WebApp.Repository
 
         public void InsertItemType(ItemType itemType)
         {
-            context.ItemTypes.Add(itemType);
+                context.ItemTypes.Add(itemType);
+            SaveAsync();
+
+
         }
 
         public async Task SaveAsync()
         {
-            context.SaveChangesAsync();
+                 context.SaveChangesAsync();
+
         }
 
         public void UpdateItemType(ItemType itemType)

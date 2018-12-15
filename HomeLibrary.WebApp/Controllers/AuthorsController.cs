@@ -52,13 +52,11 @@ namespace HomeLibrary.WebApp.Controllers
         [Authorize]
         public async Task<IActionResult> Create([Bind("AuthorId,Name,Surname")] Author author)
         {
-           // if (ModelState.IsValid)
-           // {
-           //     _context.Add(author);
-            //    await _context.SaveChangesAsync();
-            //    return RedirectToAction(nameof(Index));
-           // }
-            return View(author);
+           
+               repository.InsertAuthor(author);
+                await repository.SaveAsync();
+                return RedirectToAction(nameof(Index));
+          
         }
 
         [Authorize]
@@ -86,7 +84,7 @@ namespace HomeLibrary.WebApp.Controllers
             {
                 try
                 {
-               //     _context.Update(author);
+                    repository.UpdateAuthor(author);
                     await repository.SaveAsync();
                 }
                 catch (DbUpdateConcurrencyException)

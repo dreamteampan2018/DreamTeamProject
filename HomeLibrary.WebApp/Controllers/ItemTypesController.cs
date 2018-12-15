@@ -48,14 +48,11 @@ namespace HomeLibrary.WebApp.Controllers
         [Authorize]
         public async Task<IActionResult> Create([Bind("ItemTypeId,Name")] ItemType itemType)
         {
-            if (ModelState.IsValid)
-            {
-              //  _context.Add(itemType);
+            
+                repository.InsertItemType(itemType);
                 await repository.SaveAsync();
                 return RedirectToAction(nameof(Index));
-            }
-            return View(itemType);
-        }
+          }
 
         [Authorize]
         public async Task<IActionResult> Edit(int id)
@@ -85,12 +82,24 @@ namespace HomeLibrary.WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            // var itemType = await _context.ItemTypes.FindAsync(id);
-            //  _context.ItemTypes.Remove(itemType);
-            //  await _context.SaveChangesAsync();
-            //  return RedirectToAction(nameof(Index));
-            throw new NotImplementedException();
+            
+            repository.DeleteItemType(id);
+            await repository.SaveAsync();
+            return RedirectToAction(nameof(Index));
         }
       
+        [Authorize]
+        public async Task<IActionResult> Borrow(int id)
+        {
+            return View();
+        }
+
+        [Authorize]
+        public async Task<IActionResult> Return(int id)
+        {
+
+            return View();
+        }
+
     }
 }

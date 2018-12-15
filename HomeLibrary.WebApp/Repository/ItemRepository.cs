@@ -41,6 +41,7 @@ namespace HomeLibrary.WebApp.Repository
         {
             Item toDelete = context.Items.Find(itemId);
             context.Items.Remove(toDelete);
+            SaveAsync();
         }
 
         public async  Task<Item> GetItemByIdAsync(int itemId)
@@ -56,6 +57,7 @@ namespace HomeLibrary.WebApp.Repository
         public Item InsertItem(Item item)
         {
             context.Items.Add(item);
+            SaveAsync();
             return item;
         }
 
@@ -83,5 +85,26 @@ namespace HomeLibrary.WebApp.Repository
 
             return query.ToList();
         }
+
+        public async Task SetAsBorrowed(string borowedPerson,Item item,int userId)
+        {
+            Statistics statistics = new Statistics();
+            statistics.ItemId = item.ItemId;
+            statistics.BorrowedPerson = borowedPerson;
+            statistics.BorrowedDate = DateTime.Now;
+            item.Borrowed = true;
+            UpdateItem(item);
+            context.Statistics.Add(statistics);
+        }
+
+        public async Task SetAsReturned(Item item)
+        {
+            item.Borrowed = false;
+            UpdateItem(item);
+            Statistics toChange = context.Statistics.FirstOrDefault(x => x.ItemId == item.ItemId && x.ReturnDate == null);
+            toChange.ReturnDate = DateTime.Now;
+       }
+
+
     }
 }

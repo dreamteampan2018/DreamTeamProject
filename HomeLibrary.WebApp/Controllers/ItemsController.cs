@@ -66,15 +66,12 @@ namespace HomeLibrary.WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ItemId,Title,ItemTypeId,AuthorId,Description,YearPublishment,Borrowed,CoverGuid")] Item item)
         {
-            if (ModelState.IsValid)
-            {
+           
                 _context.Add(item);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
-            ViewData["AuthorId"] = new SelectList(_context.Authors, "AuthorId", "AuthorId", item.AuthorId);
-            ViewData["ItemTypeId"] = new SelectList(_context.ItemTypes, "ItemTypeId", "ItemTypeId", item.ItemTypeId);
-            return View(item);
+          
+           
         }
 
         // GET: Items/Edit/5
