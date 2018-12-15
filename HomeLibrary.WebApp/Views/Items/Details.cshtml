@@ -4,57 +4,66 @@
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
+<h2>Szczegółowy opis pozycji</h2>
+
+<div class="panel panel-primary">
+    <div class="panel panel-heading"> 
+        <h3 class="panel-title">@Html.DisplayFor(model => model.Title)</h3>
+         </div>
+    <div class="panel-body">
+
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ItemType)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ItemType.ItemTypeId)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Author)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Author.AuthorId)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.YearPublishment)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.YearPublishment)
+            </dd>
+            <dt>
+                Status
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Borrowed)
+            </dd>
+            <dt>
+                Okładka
+            </dt>
+            <dd>
+                <img src=@Html.DisplayFor(model => model.CoverGuid) alt="" />
+            </dd>
+        </dl>
+    </div>
+</div>
 
 <div>
-    <h4>Item</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.ItemType)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ItemType.ItemTypeId)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Author)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Author.AuthorId)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.YearPublishment)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.YearPublishment)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Borrowed)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Borrowed)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.CoverGuid)
-        </dt>
-        <dd>
-            <img src=@Html.DisplayFor(model => model.CoverGuid) alt="" />
-        </dd>
-    </dl>
+    <ul class="pager">
+        <li class="previous">
+            <a asp-action="Index">Powrót</a>
+            </li>
+</ul>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.ItemId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+

@@ -20,7 +20,6 @@ namespace HomeLibrary.WebApp.Controllers
         {
             repository =  new AuthorRepository(context);
         }
-
         
         public async Task<IActionResult> Index()
         {
@@ -46,17 +45,16 @@ namespace HomeLibrary.WebApp.Controllers
             return View();
         }
 
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
         public async Task<IActionResult> Create([Bind("AuthorId,Name,Surname")] Author author)
         {
-           
+      
                repository.InsertAuthor(author);
                 await repository.SaveAsync();
                 return RedirectToAction(nameof(Index));
-          
+      
         }
 
         [Authorize]
@@ -70,7 +68,7 @@ namespace HomeLibrary.WebApp.Controllers
             return View(author);
         }
 
-          [HttpPost]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
         public async Task<IActionResult> Edit(int id, [Bind("AuthorId,Name,Surname")] Author author)
@@ -80,8 +78,7 @@ namespace HomeLibrary.WebApp.Controllers
                 return NotFound();
             }
 
-            if (ModelState.IsValid)
-            {
+      
                 try
                 {
                     repository.UpdateAuthor(author);
@@ -99,7 +96,7 @@ namespace HomeLibrary.WebApp.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
-            }
+        
             return View(author);
         }
 

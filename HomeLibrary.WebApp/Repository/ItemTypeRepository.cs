@@ -22,6 +22,7 @@ namespace HomeLibrary.WebApp.Repository
         {
             ItemType toDelete = context.ItemTypes.Find(itemTypeId);
             context.ItemTypes.Remove(toDelete);
+            SaveAsync();
         }
 
         protected virtual void Dispose(bool disposing)

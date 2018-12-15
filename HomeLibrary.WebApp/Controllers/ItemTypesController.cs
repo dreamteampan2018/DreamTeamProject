@@ -46,7 +46,7 @@ namespace HomeLibrary.WebApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Create([Bind("ItemTypeId,Name")] ItemType itemType)
+        public async Task<IActionResult> Create([Bind("ItemTypeId,Name,CreatorDescription")] ItemType itemType)
         {
             
                 repository.InsertItemType(itemType);
@@ -64,7 +64,21 @@ namespace HomeLibrary.WebApp.Controllers
             }
             return View(itemType);
         }
-  
+
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public async Task<IActionResult> Edit([Bind("ItemTypeId,Name,CreatorDescription")] ItemType itemType)
+        {
+
+            repository.UpdateItemType(itemType);
+            await repository.SaveAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+
         [Authorize]
         public async Task<IActionResult> Delete(int id)
             {

@@ -87,3 +87,4 @@ C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug
 C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\HomeLibrary.WebApp.csproj.CopyComplete
 C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\HomeLibrary.WebApp.dll
 C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\HomeLibrary.WebApp.pdb
+C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Items\Borrow.g.cshtml.cs

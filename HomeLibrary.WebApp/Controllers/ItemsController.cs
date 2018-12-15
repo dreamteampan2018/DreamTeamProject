@@ -16,35 +16,30 @@ namespace HomeLibrary.WebApp.Controllers
 {
     public class ItemsController : Controller
     {
-        private readonly ApplicationDbContext _context;
-
+       
         private readonly ItemRepository repository;
-
+        private readonly ItemTypeRepository typeRepository;
+        private readonly AuthorRepository authorRepository;
         public ItemsController(ApplicationDbContext context)
         {
-            _context = context;
+
             repository = new ItemRepository(context);
+            typeRepository = new ItemTypeRepository(context);
+            authorRepository = new AuthorRepository(context);
         }
 
         // GET: Items
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Items.Include(i => i.Author).Include(i => i.ItemType);
-            return View(await applicationDbContext.ToListAsync());
+            return View(await repository.GetItemsAsync());
         }
 
         // GET: Items/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+           
 
-            var item = await _context.Items
-                .Include(i => i.Author)
-                .Include(i => i.ItemType)
-                .FirstOrDefaultAsync(m => m.ItemId == id);
+            var item = await repository.GetItemByIdAsync(id);
             if (item == null)
             {
                 return NotFound();
@@ -55,20 +50,24 @@ namespace HomeLibrary.WebApp.Controllers
 
         // GET: Items/Create
         [Authorize]
-        public IActionResult Create()
+        public async  Task<IActionResult> Create()
         {
-            ViewData["AuthorId"] = new SelectList(_context.Authors, "AuthorId", "AuthorId");
-            ViewData["ItemTypeId"] = new SelectList(_context.ItemTypes, "ItemTypeId", "ItemTypeId");
+            IEnumerable<Author> authorList = await authorRepository.GetAuthorsAsync();
+            ViewData["AuthorList"] = new SelectList(authorList, "AuthorId", "AuthorName");
+            IEnumerable<ItemType> typeList = await typeRepository.GetItemTypesAsync();
+            ViewData["TypeList"] = new SelectList(typeList, "ItemTypeId", "Name");
             return View();
         }
+
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ItemId,Title,ItemTypeId,AuthorId,Description,YearPublishment,Borrowed,CoverGuid")] Item item)
         {
            
-                _context.Add(item);
-                await _context.SaveChangesAsync();
+                repository.InsertItem(item);
+                await repository.SaveAsync();
                 return RedirectToAction(nameof(Index));
           
            
@@ -76,20 +75,18 @@ namespace HomeLibrary.WebApp.Controllers
 
         // GET: Items/Edit/5
         [Authorize]
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-             
-            var item = await _context.Items.FindAsync(id);
+            var item = await repository.GetItemByIdAsync(id);
             if (item == null)
             {
                 return NotFound();
             }
-            ViewData["AuthorId"] = new SelectList(_context.Authors, "AuthorId", "AuthorId", item.AuthorId);
-            ViewData["ItemTypeId"] = new SelectList(_context.ItemTypes, "ItemTypeId", "ItemTypeId", item.ItemTypeId);
+            IEnumerable<Author> authorList = await authorRepository.GetAuthorsAsync();
+            ViewData["AuthorList"] = new SelectList(authorList, "AuthorId", "AuthorName");
+            IEnumerable<ItemType> typeList = await typeRepository.GetItemTypesAsync();
+            ViewData["TypeList"] = new SelectList(typeList, "ItemTypeId", "Name");
+
             return View(item);
         }
         [HttpPost]
@@ -106,8 +103,8 @@ namespace HomeLibrary.WebApp.Controllers
             {
                 try
                 {
-                    _context.Update(item);
-                    await _context.SaveChangesAsync();
+                    repository.UpdateItem(item);
+                    await repository.SaveAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -122,24 +119,20 @@ namespace HomeLibrary.WebApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["AuthorId"] = new SelectList(_context.Authors, "AuthorId", "AuthorId", item.AuthorId);
-            ViewData["ItemTypeId"] = new SelectList(_context.ItemTypes, "ItemTypeId", "ItemTypeId", item.ItemTypeId);
+            IEnumerable<Author> authorList = await authorRepository.GetAuthorsAsync();
+            ViewData["AuthorList"] = new SelectList(authorList, "AuthorId", "AuthorName");
+            IEnumerable<ItemType> typeList = await typeRepository.GetItemTypesAsync();
+            ViewData["TypeList"] = new SelectList(typeList, "ItemTypeId", "Name");
             return View(item);
         }
 
         // GET: Items/Delete/5
         [Authorize]
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            var item = await _context.Items
-                .Include(i => i.Author)
-                .Include(i => i.ItemType)
-                .FirstOrDefaultAsync(m => m.ItemId == id);
+
+            var item = await repository.GetItemByIdAsync(id);
             if (item == null)
             {
                 return NotFound();
@@ -154,9 +147,52 @@ namespace HomeLibrary.WebApp.Controllers
         [Authorize]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var item = await _context.Items.FindAsync(id);
-            _context.Items.Remove(item);
-            await _context.SaveChangesAsync();
+            var item = await repository.GetItemByIdAsync(id);
+            if (item != null)
+            {
+                repository.DeleteItem(id);
+                await repository.SaveAsync();
+            }
+                return RedirectToAction(nameof(Index));
+        }
+
+
+        [Authorize]
+        public async Task<IActionResult> Borrow(int id)
+        {
+            var item = await repository.GetItemByIdAsync(id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+
+            return View(item);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public async Task<IActionResult> Borrow(int id, [Bind("ItemId,Title,ItemTypeId,AuthorId,Description,YearPublishment,Borrowed,CoverGuid,BorrowedPerson")] Item item)
+        {
+            if (id != item.ItemId)
+            {
+                return NotFound();
+            }
+            try
+            {
+                await repository.SetAsBorrowed(item.BorrowedPerson,item,1);
+                await repository.SaveAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ItemExists(item.ItemId))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
             return RedirectToAction(nameof(Index));
         }
 
@@ -186,7 +222,14 @@ namespace HomeLibrary.WebApp.Controllers
 
         private bool ItemExists(int id)
         {
-            return _context.Items.Any(e => e.ItemId == id);
+           if (repository.GetItemByIdAsync(id)==null)
+            {
+                return false;
+            }
+           else
+            {
+                return true;
+            }
         }
 
         private async Task<bool> UploadToBlob(string filename, int itemId, byte[] imageBuffer = null, Stream stream = null)

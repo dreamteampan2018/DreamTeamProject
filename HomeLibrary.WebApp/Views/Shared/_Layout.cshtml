@@ -34,10 +34,18 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
                     <li><a asp-area="" asp-controller="Authors" asp-action="Index">Autorzy</a></li>
-                    <li><a asp-area="" asp-controller="ItemTypes" asp-action="Index">Typy</a></li>
-                    <li><a asp-area="" asp-controller="Items" asp-action="Index">Biblioteka</a></li>
-                    <li><a asp-area="" asp-controller="Search" asp-action="Index">Wyszukiwanie</a></li>
-               </ul>
+                    <li><a asp-area="" asp-controller="ItemTypes" asp-action="Index">Nośnik</a></li>
+
+                    <li class="dropdown">
+                    
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Biblioteka<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-area="" asp-controller="Items" asp-action="Index">Lista pozycji</a></li>
+                            <li><a asp-area="" asp-controller="Search" asp-action="Index">Wyszukiwanie</a></li>
+                        </ul>
+                    </li>
+
+                 </ul>
                 <partial name="_LoginPartial" />
             </div>
         </div>

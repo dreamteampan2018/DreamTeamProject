@@ -13,7 +13,6 @@ namespace HomeLibrary.WebApp.Data
             : base(options)
         {
         }
-
         public DbSet<ItemType> ItemTypes { get; set; }
         public DbSet<Author> Authors { get; set; }
         public DbSet<Item> Items { get; set; }

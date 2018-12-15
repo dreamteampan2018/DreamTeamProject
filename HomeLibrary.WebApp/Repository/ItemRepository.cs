@@ -95,6 +95,7 @@ namespace HomeLibrary.WebApp.Repository
             item.Borrowed = true;
             UpdateItem(item);
             context.Statistics.Add(statistics);
+            context.SaveChanges();
         }
 
         public async Task SetAsReturned(Item item)
