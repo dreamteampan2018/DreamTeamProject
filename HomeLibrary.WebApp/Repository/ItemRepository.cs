@@ -86,22 +86,29 @@ namespace HomeLibrary.WebApp.Repository
             return query.ToList();
         }
 
-        public async Task SetAsBorrowed(string borowedPerson,Item item,int userId)
+        public async Task SetAsBorrowed(string borowedPerson, Item item, string userName)
         {
             Statistics statistics = new Statistics();
             statistics.ItemId = item.ItemId;
             statistics.BorrowedPerson = borowedPerson;
             statistics.BorrowedDate = DateTime.Now;
-            item.Borrowed = true;
-            UpdateItem(item);
+            statistics.ChangedUser = userName;
             context.Statistics.Add(statistics);
+            
+
+            Item toUpdate = await GetItemByIdAsync(item.ItemId);
+            toUpdate.Borrowed = true;
+            toUpdate.BorrowedPerson = borowedPerson;
+            UpdateItem(toUpdate);
             context.SaveChanges();
         }
-
         public async Task SetAsReturned(Item item)
         {
-            item.Borrowed = false;
-            UpdateItem(item);
+            Item toUpdate = await GetItemByIdAsync(item.ItemId);
+            toUpdate.Borrowed = false;
+            toUpdate.BorrowedPerson = string.Empty;
+            UpdateItem(toUpdate);
+            context.SaveChanges();
             Statistics toChange = context.Statistics.FirstOrDefault(x => x.ItemId == item.ItemId && x.ReturnDate == null);
             toChange.ReturnDate = DateTime.Now;
        }

@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Http;
 using System.IO;
 using HomeLibrary.WebApp.Repository;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace HomeLibrary.WebApp.Controllers
 {
@@ -20,6 +21,7 @@ namespace HomeLibrary.WebApp.Controllers
         private readonly ItemRepository repository;
         private readonly ItemTypeRepository typeRepository;
         private readonly AuthorRepository authorRepository;
+     
         public ItemsController(ApplicationDbContext context)
         {
 
@@ -171,7 +173,7 @@ namespace HomeLibrary.WebApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public async Task<IActionResult> Borrow(int id, [Bind("ItemId,Title,ItemTypeId,AuthorId,Description,YearPublishment,Borrowed,CoverGuid,BorrowedPerson")] Item item)
+        public async Task<IActionResult> Borrow(int id, [Bind("ItemId,BorrowedPerson")] Item item)
         {
             if (id != item.ItemId)
             {
@@ -179,7 +181,8 @@ namespace HomeLibrary.WebApp.Controllers
             }
             try
             {
-                await repository.SetAsBorrowed(item.BorrowedPerson,item,1);
+                var currentUser = HttpContext.User.Identity;
+                await repository.SetAsBorrowed(item.BorrowedPerson,item, currentUser.Name);
                 await repository.SaveAsync();
             }
             catch (DbUpdateConcurrencyException)
