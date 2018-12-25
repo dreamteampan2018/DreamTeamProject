@@ -689,23 +689,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\z3us\\.nuget\\packages\\": {},
+    "C:\\Users\\Admin\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\z3us\\Documents\\Zaliczenie\\DreamTeamProject\\HomeLibrary.DatabaseModel\\HomeLibrary.DatabaseModel.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\Desktop\\Boobstrap\\DreamTeamProject\\HomeLibrary.DatabaseModel\\HomeLibrary.DatabaseModel.csproj",
       "projectName": "HomeLibrary.DatabaseModel",
-      "projectPath": "C:\\Users\\z3us\\Documents\\Zaliczenie\\DreamTeamProject\\HomeLibrary.DatabaseModel\\HomeLibrary.DatabaseModel.csproj",
-      "packagesPath": "C:\\Users\\z3us\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\z3us\\Documents\\Zaliczenie\\DreamTeamProject\\HomeLibrary.DatabaseModel\\obj\\",
+      "projectPath": "C:\\Users\\Admin\\Desktop\\Boobstrap\\DreamTeamProject\\HomeLibrary.DatabaseModel\\HomeLibrary.DatabaseModel.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Admin\\Desktop\\Boobstrap\\DreamTeamProject\\HomeLibrary.DatabaseModel\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\z3us\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
