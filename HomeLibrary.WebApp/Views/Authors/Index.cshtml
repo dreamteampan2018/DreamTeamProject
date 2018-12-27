@@ -3,49 +3,58 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-
-<h2>Autors</h2>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Surname)
-            </th>
-            <th></th>
+<link rel="stylesheet" href="~/css/Authors.css" />
+<div class="panel panel-primary" id='headerAuthorTable'>
+    <table>
+        <tr class="panel-heading">
+            <td ><h2>Authors</h2></td>
+            <td>
+                <p>
+                    <a class="btn btn-sm btn-outline-primary btn-create" asp-action="Create">Create New</a>
+                </p>
+            </td>
         </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+    </table>
+</div>
+
+
+<div class="container" id="authorsTable">
+    <table class="table">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Surname)
-                </td>
-                <td>
-                    <a href="#" class="btn btn-primary a-btn-slide-text">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                        <span><strong>Edit</strong></span>
-                    </a>|
-                    <a asp-action="Details" asp-route-id="@item.AuthorId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.AuthorId">Delete</a>
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Surname)
+                </th>
+                <th></th>
             </tr>
-        }
-    </tbody>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Surname)
+                    </td>
+                    <td>
+                        <a href="#" class="btn btn-primary a-btn-slide-text">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            <span><strong>Edit</strong></span>
+                        </a>|
+                        <a class="btn btn-primary a-btn-slide-text" asp-action="Details" asp-route-id="@item.AuthorId"><strong>Details</strong></a> |
+                        <a class="btn btn-primary a-btn-slide-text" asp-action="Delete" asp-route-id="@item.AuthorId"><strong>Delete</strong></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
 
-</table>
+    </table>
+</div>
 
-    
 
 

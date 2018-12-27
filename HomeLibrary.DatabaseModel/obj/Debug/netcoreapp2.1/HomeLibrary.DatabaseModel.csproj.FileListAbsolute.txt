@@ -15,3 +15,4 @@ C:\Users\Admin\Desktop\Boobstrap\DreamTeamProject\HomeLibrary.DatabaseModel\obj\
 C:\Users\Admin\Desktop\Boobstrap\DreamTeamProject\HomeLibrary.DatabaseModel\obj\Debug\netcoreapp2.1\HomeLibrary.DatabaseModel.AssemblyInfo.cs
 C:\Users\Admin\Desktop\Boobstrap\DreamTeamProject\HomeLibrary.DatabaseModel\obj\Debug\netcoreapp2.1\HomeLibrary.DatabaseModel.dll
 C:\Users\Admin\Desktop\Boobstrap\DreamTeamProject\HomeLibrary.DatabaseModel\obj\Debug\netcoreapp2.1\HomeLibrary.DatabaseModel.pdb
+C:\Users\Admin\Desktop\Boobstrap\DreamTeamProject\HomeLibrary.DatabaseModel\obj\Debug\netcoreapp2.1\HomeLibrary.DatabaseModel.csprojAssemblyReference.cache
