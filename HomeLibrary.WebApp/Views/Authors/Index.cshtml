@@ -1,0 +1,41 @@
+﻿@model IEnumerable<HomeLibrary.DatabaseModel.Author>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table table-hover" >
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Surname)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                <a class="glyphicon glyphicon-edit"  data-toggle="tooltip" title="Edytuj" asp-action="Edit" asp-route-id="@item.AuthorId"></a> 
+                <a class="glyphicon glyphicon-search" data-toggle="tooltip" title="Szczegóły" asp-action="Details" asp-route-id="@item.AuthorId"></a> 
+                <a class="glyphicon glyphicon-trash" data-toggle="tooltip" title="Usuń" asp-action="Delete" asp-route-id="@item.AuthorId"></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

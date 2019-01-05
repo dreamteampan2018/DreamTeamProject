@@ -1,0 +1,63 @@
+﻿@model HomeLibrary.DatabaseModel.Item
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Item</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ItemType.ItemTypeId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Author)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Author.AuthorId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.YearPublishment)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.YearPublishment)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Borrowed)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Borrowed)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CoverGuid)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CoverGuid)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ItemId" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>
