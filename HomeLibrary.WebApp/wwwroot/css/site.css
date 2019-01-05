@@ -35,16 +35,19 @@ p {
     padding: 0px;
     margin: 0px;
 }
-.naviButtons::after {
+#nav_right li a::after,
+.naviButtons::after
+{
     content: '';
     display: block;
     width: 0;
     height: 2px;
-    background: #573105;
+    background: #140e0e;
     transition: width .3s;
 }
+#nav_right li a:hover::after,
 .naviButtons:hover::after {
-    width:100%;
+    width: 100%;
     transition: width .3s
 }
 
