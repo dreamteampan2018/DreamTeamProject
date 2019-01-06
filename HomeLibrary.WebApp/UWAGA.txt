@@ -1,0 +1,8 @@
+﻿Jako administrator komputera:
+uruchom cmd
+C:\>cd "Program Files (x86)"
+C:\Program Files (x86)>cd "Microsoft SDKs"
+C:\Program Files (x86)\Microsoft SDKs>cd Azure
+C:\Program Files (x86)\Microsoft SDKs\Azure>cd "Storage Emulator"
+C:\Program Files (x86)\Microsoft SDKs\Azure\Storage Emulator>AzureStorageEmulator.exe start
+i symulator azure działa

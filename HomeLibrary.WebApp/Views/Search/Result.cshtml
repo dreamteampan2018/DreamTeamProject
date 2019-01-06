@@ -1,0 +1,50 @@
+﻿@model IEnumerable<HomeLibrary.DatabaseModel.Item>
+
+@{
+    ViewData["Title"] = "Result";
+}
+
+<h2>Result</h2>
+<label>Tutaj będzie wynik</label>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemType)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YearPublishment)
+            </th>
+
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ItemType.ItemTypeId)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.YearPublishment)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

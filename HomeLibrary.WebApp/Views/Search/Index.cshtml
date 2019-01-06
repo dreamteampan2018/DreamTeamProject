@@ -1,0 +1,27 @@
+﻿@model HomeLibrary.WebApp.HelperClass.SearchPosition
+@{
+    ViewData["Title"] = "Index";
+}
+@using System.Collections
+<h2>Wyszukaj</h2>
+
+@using (Html.BeginForm("Result", "Search", FormMethod.Post))
+{
+
+<div>
+
+    @Html.DropDownListFor(Model=>Model.TypeId,
+    new SelectList((IEnumerable)ViewData["TypeList"],"Value","Text"), "Typ pozycji", 
+    new { @class = "form-control " })
+
+    <label> Tytuł</label>
+    <input id="Title" name="Title" type="text" runat="server" style="width: 400px" />
+    <label> Autor</label>
+    <input id="Author" name="Author" type="text" runat="server" style="width: 400px" />
+    <input type="submit" id="submitId" value="Wyszukaj"  class="btn btn-success" />
+</div>
+
+}
+
+
+
