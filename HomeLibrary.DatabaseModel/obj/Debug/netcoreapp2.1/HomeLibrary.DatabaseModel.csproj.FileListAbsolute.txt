@@ -1,8 +1,0 @@
-C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.DatabaseModel\bin\Debug\netcoreapp2.1\HomeLibrary.DatabaseModel.deps.json
-C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.DatabaseModel\bin\Debug\netcoreapp2.1\HomeLibrary.DatabaseModel.dll
-C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.DatabaseModel\bin\Debug\netcoreapp2.1\HomeLibrary.DatabaseModel.pdb
-C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.DatabaseModel\obj\Debug\netcoreapp2.1\HomeLibrary.DatabaseModel.csproj.CoreCompileInputs.cache
-C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.DatabaseModel\obj\Debug\netcoreapp2.1\HomeLibrary.DatabaseModel.AssemblyInfoInputs.cache
-C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.DatabaseModel\obj\Debug\netcoreapp2.1\HomeLibrary.DatabaseModel.AssemblyInfo.cs
-C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.DatabaseModel\obj\Debug\netcoreapp2.1\HomeLibrary.DatabaseModel.dll
-C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.DatabaseModel\obj\Debug\netcoreapp2.1\HomeLibrary.DatabaseModel.pdb
