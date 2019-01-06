@@ -1,0 +1,6 @@
+HomeLibrary.WebApp/obj/
+HomeLibrary.WebApp/bin/
+*/obj/
+*/bin/
+.vs/HomeLibrary/v15/Server/sqlite3/storage.ide
+*.vs/
