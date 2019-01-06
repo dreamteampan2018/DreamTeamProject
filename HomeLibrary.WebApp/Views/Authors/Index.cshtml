@@ -48,14 +48,32 @@
                         </a>|
                         <a class="btn btn-primary a-btn-slide-text" asp-action="Details" asp-route-id="@item.AuthorId"><strong>Details</strong></a> |
                         <a class="btn btn-primary a-btn-slide-text" asp-action="Delete" asp-route-id="@item.AuthorId"><strong>Delete</strong></a>
-                        <a class="btn btn-primary a-btn-slide-text" asp-action="Delete" asp-route-id="@item.AuthorId"><p class="glyphicon glyphicon-modal-window"></p></a>
+                        <a class="btn btn-primary a-btn-slide-text" onclick="getName('@item.Name','@item.Surname')" data-toggle="modal" data-target="#basicModal">
+                            <strong class="glyphicon glyphicon-modal-window" ></strong>
+                        </a>
+
                     </td>
                 </tr>
             }
+
         </tbody>
 
     </table>
-</div>
+    <div id="x"></div>
+        <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <p class="modal-title" id="myModalLabel"></p>
+                    </div>
+                    <div class="modal-body">
+                        <h3>Tekst z Wikipedi</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 

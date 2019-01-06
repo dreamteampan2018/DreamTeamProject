@@ -2,6 +2,14 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+const getName = (name,surname) =>
+{
+
+    $("#basicModal").show(function () {
+        $(this).find("#myModalLabel").text(name+" "+surname)
+        });
+        
+} 
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 })
