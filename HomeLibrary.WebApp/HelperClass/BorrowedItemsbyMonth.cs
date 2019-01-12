@@ -7,7 +7,7 @@ namespace HomeLibrary.WebApp.HelperClass
 {
     public class BorrowedItemsbyMonth
     {
-        public int ItemCount { get; set; }
+        public int ItemID { get; set; }
         public string Month { get; set; }
     }
 }

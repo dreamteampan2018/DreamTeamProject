@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Podgląd statystyk</h2>
+<div class="alert-danger">
+    <p> Ilość autorów w bazie:</p>@ViewData["AuthorsCount"]
+</div>
+<div class="alert-success">
+    <p>Stan wypożyczeń</p>@ViewData["BorrowedCountItem"]
+</div>
+<div class="alert-success">
+    <p>Popularność wypożyczeń wg nośnika</p>
+    @foreach(var row in ViewData["MostTypeStat"] as IEnumerable<HomeLibrary.WebApp.HelperClass.MostTypeStatistics>)
+    {
+
+    <Div>@row.TypeName : @row.TypeCount  </div>
+    <br>
+
+    }
+
+</div>

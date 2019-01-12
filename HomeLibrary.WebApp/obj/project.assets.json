@@ -12561,11 +12561,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kasia\\DreamTeamNew3\\DreamTeamProject\\HomeLibrary.WebApp\\HomeLibrary.WebApp.csproj",
+      "projectUniqueName": "C:\\Desktop\\DreamTeamProject\\HomeLibrary.WebApp\\HomeLibrary.WebApp.csproj",
       "projectName": "HomeLibrary.WebApp",
-      "projectPath": "C:\\Users\\kasia\\DreamTeamNew3\\DreamTeamProject\\HomeLibrary.WebApp\\HomeLibrary.WebApp.csproj",
+      "projectPath": "C:\\Desktop\\DreamTeamProject\\HomeLibrary.WebApp\\HomeLibrary.WebApp.csproj",
       "packagesPath": "C:\\Users\\kasia\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kasia\\DreamTeamNew3\\DreamTeamProject\\HomeLibrary.WebApp\\obj\\",
+      "outputPath": "C:\\Desktop\\DreamTeamProject\\HomeLibrary.WebApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -12584,8 +12584,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\kasia\\DreamTeamNew3\\DreamTeamProject\\HomeLibrary.DatabaseModel\\HomeLibrary.DatabaseModel.csproj": {
-              "projectPath": "C:\\Users\\kasia\\DreamTeamNew3\\DreamTeamProject\\HomeLibrary.DatabaseModel\\HomeLibrary.DatabaseModel.csproj"
+            "C:\\Desktop\\DreamTeamProject\\HomeLibrary.DatabaseModel\\HomeLibrary.DatabaseModel.csproj": {
+              "projectPath": "C:\\Desktop\\DreamTeamProject\\HomeLibrary.DatabaseModel\\HomeLibrary.DatabaseModel.csproj"
             }
           }
         }
