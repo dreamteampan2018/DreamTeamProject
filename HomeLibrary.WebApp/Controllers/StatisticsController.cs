@@ -26,9 +26,10 @@ namespace HomeLibrary.WebApp.Controllers
             int borrowedCountItem = statisticRepository.GetBorrowedCountItem(4);
             ViewData["BorrowedCountItem"] = borrowedCountItem;
 
-           // int ilosc = statisticRepository.GetItemsCount(id);
-           // ViewData["TotalCountItem"] = ilosc;
-
+            // int ilosc = statisticRepository.GetItemsCount(id);
+            // ViewData["TotalCountItem"] = ilosc;
+            ViewBag.Data = "1,8,2,12"; //list of strings that you need to show on the chart. as mentioned in the example from c-sharpcorner
+            ViewBag.ObjectName = "a,b,c,d";
             List<MostTypeStatistics> tempList = statisticRepository.GetMostTypeStatistics();
             ViewData["MostTypeStat"] = tempList;
 
