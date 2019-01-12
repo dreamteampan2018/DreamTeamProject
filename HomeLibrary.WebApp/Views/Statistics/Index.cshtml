@@ -1,0 +1,59 @@
+﻿@model IEnumerable<HomeLibrary.DatabaseModel.Statistics>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Item)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BorrowedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReturnDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BorrowedPerson)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChangedUser)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Item.ItemId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BorrowedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReturnDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BorrowedPerson)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ChangedUser)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.StatisticsId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.StatisticsId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.StatisticsId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

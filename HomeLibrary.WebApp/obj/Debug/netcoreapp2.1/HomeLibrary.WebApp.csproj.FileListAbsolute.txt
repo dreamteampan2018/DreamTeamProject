@@ -88,3 +88,9 @@ C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug
 C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\HomeLibrary.WebApp.dll
 C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\HomeLibrary.WebApp.pdb
 C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Items\Borrow.g.cshtml.cs
+C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Statistics\Create.g.cshtml.cs
+C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Statistics\Delete.g.cshtml.cs
+C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Statistics\Details.g.cshtml.cs
+C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Statistics\Edit.g.cshtml.cs
+C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Statistics\Index.g.cshtml.cs
+C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.WebApp\obj\Debug\netcoreapp2.1\Razor\Views\Items\ShowAzureDetail.g.cshtml.cs

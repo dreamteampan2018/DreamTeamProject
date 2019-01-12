@@ -13,6 +13,7 @@ namespace HomeLibrary.WebApp.Repository
         private CloudStorageAccount storageAccount;
         private readonly string container = "HomeLibrary";
         public BlobContainerPublicAccessType PublicAccess { get; set; }
+
         public AzureRepository()
         {
             storageAccount= CloudStorageAccount.Parse("UseDevelopmentStorage=true;");
@@ -56,6 +57,9 @@ namespace HomeLibrary.WebApp.Repository
             }
             return string.Empty;
         }
+
+
+
 
     }
 }

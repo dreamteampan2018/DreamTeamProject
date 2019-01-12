@@ -1,27 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using HomeLibrary.DatabaseModel;
+using HomeLibrary.WebApp.Data;
+using HomeLibrary.WebApp.HelperClass;
+using HomeLibrary.WebApp.Repository;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using HomeLibrary.DatabaseModel;
-using HomeLibrary.WebApp.Data;
-using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
 using System.IO;
-using HomeLibrary.WebApp.Repository;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
+using System.Threading.Tasks;
 
 namespace HomeLibrary.WebApp.Controllers
 {
     public class ItemsController : Controller
     {
-       
         private readonly ItemRepository repository;
         private readonly ItemTypeRepository typeRepository;
         private readonly AuthorRepository authorRepository;
-     
+   
         public ItemsController(ApplicationDbContext context)
         {
 
@@ -60,8 +57,6 @@ namespace HomeLibrary.WebApp.Controllers
             ViewData["TypeList"] = new SelectList(typeList, "ItemTypeId", "Name");
             return View();
         }
-
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -170,6 +165,7 @@ namespace HomeLibrary.WebApp.Controllers
 
             return View(item);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
@@ -197,6 +193,24 @@ namespace HomeLibrary.WebApp.Controllers
                 }
             }
             return RedirectToAction(nameof(Index));
+        }
+
+
+        [HttpPost("UploadAzureFiles")]
+        public async Task<IActionResult> PostCoverToAzure(List<IFormFile> files)
+        {
+            var uploadSuccess = false;
+            ViewData["OCRDetail"] = string.Empty;
+            foreach (var formFile in files)
+            {
+                if (formFile.Length <= 0)
+                {
+                    continue;
+                }
+                var stream = formFile.OpenReadStream();
+                ViewData["OCRDetail"] = await CognitiveServiceHelper.MakeOCRRequest(stream);
+            }
+            return View("ShowAzureDetail");
         }
 
 

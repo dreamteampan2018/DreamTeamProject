@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EntityFrameworkCore.SqlServerCompact40" Version="2.2.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HomeLibrary.DatabaseModel\HomeLibrary.DatabaseModel.csproj" />
+    <ProjectReference Include="..\HomeLibrary.WebApp\HomeLibrary.WebApp.csproj" />
+  </ItemGroup>
+
+</Project>
