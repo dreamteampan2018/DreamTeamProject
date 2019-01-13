@@ -1,0 +1,31 @@
+﻿
+@{
+
+    //ViewData["Title"] = "FindMyCover";
+    ViewBag.Title = "Index";
+}
+
+<h2>Select image file (*.jpg)</h2>
+
+<div>@ViewData["Message"]</div>
+<form method="post" asp-action="Index" asp-controller="FindMyCover" enctype="multipart/form-data">
+    <input type="file" name="files" accept="image/jpeg" />
+    <input type="submit" value="Upload" />
+   
+</form>
+
+<div>
+    Your words from the cover:
+    @{
+        if (@ViewBag.Resoult!=null)
+        {
+            foreach (string st in ViewBag.Resoult)
+            {
+            <p>
+                @st
+            </p>
+                }
+            }
+
+        }
+</div>
