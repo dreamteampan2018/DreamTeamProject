@@ -62,8 +62,7 @@ namespace HomeLibrary.WebApp.Controllers
 
             //czyli ViewBag.Resoult = FunkcjaPrzeszukujacaBazeKsiazekKtoraZwracaListKsiązękZawierajacychSlowaZListy(resoult);
             ViewBag.Resoult = resoult; //send resoult list wiew
-
-            return View();
+           return View();
         }
 
 
