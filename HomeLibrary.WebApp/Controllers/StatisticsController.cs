@@ -2,159 +2,67 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using HomeLibrary.DatabaseModel;
 using HomeLibrary.WebApp.Data;
+using HomeLibrary.WebApp.HelperClass;
+using HomeLibrary.WebApp.Repository;
+using Microsoft.AspNetCore.Mvc;
 
 namespace HomeLibrary.WebApp.Controllers
 {
     public class StatisticsController : Controller
     {
-        private readonly ApplicationDbContext _context;
-
+        private readonly StatisticRepository statisticRepository;
         public StatisticsController(ApplicationDbContext context)
         {
-            _context = context;
+
+            statisticRepository = new StatisticRepository(context);
         }
-
-        // GET: Statistics
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var applicationDbContext = _context.Statistics.Include(s => s.Item);
-            return View(await applicationDbContext.ToListAsync());
+            int authorsCount = statisticRepository.GetAuthorsCount();
+            ViewData["AuthorsCount"] = authorsCount;
+
+
+            int borrowedCountItem = statisticRepository.GetBorrowedCountItem(4);
+            ViewData["BorrowedCountItem"] = borrowedCountItem;
+
+            // int ilosc = statisticRepository.GetItemsCount(id);
+            // ViewData["TotalCountItem"] = ilosc;
+            ViewBag.Data = "1,8,2,12"; //list of strings that you need to show on the chart. as mentioned in the example from c-sharpcorner
+            ViewBag.ObjectName = "a,b,c,d";
+            List<MostTypeStatistics> tempList = statisticRepository.GetMostTypeStatistics();
+            ViewData["MostTypeStat"] = tempList;
+
+            return View();
         }
-
-        // GET: Statistics/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult GetAuthorsCount()
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var statistics = await _context.Statistics
-                .Include(s => s.Item)
-                .FirstOrDefaultAsync(m => m.StatisticsId == id);
-            if (statistics == null)
-            {
-                return NotFound();
-            }
-
-            return View(statistics);
-        }
-
-        // GET: Statistics/Create
-        public IActionResult Create()
-        {
-            ViewData["ItemId"] = new SelectList(_context.Items, "ItemId", "ItemId");
+           int ilosc= statisticRepository.GetAuthorsCount();
+            ViewData["AuthorsCount"] = ilosc;
             return View();
         }
 
-        // POST: Statistics/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StatisticsId,ItemId,BorrowedDate,ReturnDate,BorrowedPerson,ChangedUser")] Statistics statistics)
+        //Statistics/GetBoorowdItems/1
+        public IActionResult GetBoorowdItems(int id)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(statistics);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["ItemId"] = new SelectList(_context.Items, "ItemId", "ItemId", statistics.ItemId);
-            return View(statistics);
+            int borrowedCountItem = statisticRepository.GetBorrowedCountItem(id);
+            ViewData["BorrowedCountItem"] = borrowedCountItem;
+            return View();
+
+        }
+        
+        public IActionResult GetItemsCount (int typeID)
+        {
+            int ilosc = statisticRepository.GetItemsCount(typeID);
+            ViewData["TotalCountItem"] = ilosc;
+            return View();
         }
 
-        // GET: Statistics/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult GetMostTypeStatistic()
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var statistics = await _context.Statistics.FindAsync(id);
-            if (statistics == null)
-            {
-                return NotFound();
-            }
-            ViewData["ItemId"] = new SelectList(_context.Items, "ItemId", "ItemId", statistics.ItemId);
-            return View(statistics);
-        }
-
-        // POST: Statistics/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("StatisticsId,ItemId,BorrowedDate,ReturnDate,BorrowedPerson,ChangedUser")] Statistics statistics)
-        {
-            if (id != statistics.StatisticsId)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(statistics);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!StatisticsExists(statistics.StatisticsId))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["ItemId"] = new SelectList(_context.Items, "ItemId", "ItemId", statistics.ItemId);
-            return View(statistics);
-        }
-
-        // GET: Statistics/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var statistics = await _context.Statistics
-                .Include(s => s.Item)
-                .FirstOrDefaultAsync(m => m.StatisticsId == id);
-            if (statistics == null)
-            {
-                return NotFound();
-            }
-
-            return View(statistics);
-        }
-
-        // POST: Statistics/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var statistics = await _context.Statistics.FindAsync(id);
-            _context.Statistics.Remove(statistics);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool StatisticsExists(int id)
-        {
-            return _context.Statistics.Any(e => e.StatisticsId == id);
+            List<MostTypeStatistics> tempList = statisticRepository.GetMostTypeStatistics();
+            ViewData["MostTypeStat"] = tempList;
+            return View();
         }
     }
 }

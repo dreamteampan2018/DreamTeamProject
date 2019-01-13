@@ -1,4 +1,5 @@
-﻿@model IEnumerable<HomeLibrary.DatabaseModel.Item>
+﻿@using System.Collections.Generic;
+@model IEnumerable<HomeLibrary.DatabaseModel.Item>
 
 @{
     ViewData["Title"] = "Result";
@@ -15,7 +16,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.ItemType)
             </th>
-            
+
             <th>
                 @Html.DisplayNameFor(model => model.Description)
             </th>
@@ -37,7 +38,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.ItemType.ItemTypeId)
                 </td>
-                
+
                 <td>
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
