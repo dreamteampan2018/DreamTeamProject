@@ -12,6 +12,7 @@ namespace HomeLibrary.DatabaseModel
         public DateTime BorrowedDate { get; set; }
         public DateTime ReturnDate { get; set; }
         public string BorrowedPerson { get; set; }
+        public string ChangedUser { get; set; }
         public int  UserId { get; set; }
     }
 }

@@ -6,3 +6,4 @@ C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.DatabaseModel\ob
 C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.DatabaseModel\obj\Debug\netcoreapp2.1\HomeLibrary.DatabaseModel.AssemblyInfo.cs
 C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.DatabaseModel\obj\Debug\netcoreapp2.1\HomeLibrary.DatabaseModel.dll
 C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.DatabaseModel\obj\Debug\netcoreapp2.1\HomeLibrary.DatabaseModel.pdb
+C:\Users\z3us\Documents\Zaliczenie\DreamTeamProject\HomeLibrary.DatabaseModel\obj\Debug\netcoreapp2.1\HomeLibrary.DatabaseModel.csprojAssemblyReference.cache
