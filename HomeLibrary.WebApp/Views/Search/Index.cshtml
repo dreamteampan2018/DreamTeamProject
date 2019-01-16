@@ -2,25 +2,26 @@
 @{
     ViewData["Title"] = "Index";
 }
-
-<h2>Index</h2>
+@using System.Collections
+<h2>Wyszukaj</h2>
 
 @using (Html.BeginForm("Result", "Search", FormMethod.Post))
 {
 
-<div>
-    Last Name:<br>
-    <select id="TypeId" name="TypeId" style="width: 200px">
-        <option selected="selected" value="1">Książka</option>
-        <option value="2">Płyta CD</option>
-        <option value="3">Płyta DVD</option>
-    </select>
-    <input id="Title"  name="Title" type="text" runat="server" style="width: 400px" />
-    <input id="Author" name="Author" type="text" runat="server" style="width: 400px" />
-    <input type="submit" id="submitId" value="submit" />
-</div>
-
-}
-
-
-
+<div class="container">
+    <div class="col-lg-3">
+        @Html.DropDownListFor(Model=>Model.TypeId,
+        new SelectList((IEnumerable)ViewData["TypeList"],"Value","Text"), "Typ pozycji",
+        new { @class = "form-control " })
+    </div>
+    <div class="col-lg-3">
+        <label> Tytuł</label>
+        <input id="Title" name="Title" type="text" runat="server" style="width: 400px" placeholder="dowolny tytuł" />
+       </div>
+        <div class="col-lg-3">
+            <label> Autor</label>
+            <input id="Author" name="Author" type="text" runat="server" style="width: 400px" placeholder="dowolny autor" />
+        </div>
+        <input type="submit" id="submitId" value="Wyszukaj" class="btn btn-success pull-left" />
+    </div>
+        }

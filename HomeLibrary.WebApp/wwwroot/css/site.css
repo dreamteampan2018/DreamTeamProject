@@ -100,4 +100,124 @@ p {
     }
 }
 
-    
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    border-radius: 35px;
+    font-size: 24px;
+    line-height: 1.33;
+}
+
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+}
+
+.btn-circle-small {
+    width: 20px;
+    height: 20px;
+    padding: 3px 0px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 10px;
+    line-height: 0.42857;
+}
+
+/*----------3.Cards----------*/
+.card {
+    position: relative;
+    margin: 2% 5px 2% 5px;
+    background-color: #fff;
+    transition: box-shadow .25s;
+    border-radius: 2px;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    padding: 0;
+    min-width: 400px;
+    max-width: 500px;
+}
+
+    .card .card-image img {
+        display: block;
+        border-radius: 2px 2px 0 0;
+        position: relative;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .card .card-content {
+        padding: 15px 10px 0 0;
+        border-radius: 0 0 2px 2px;
+    }
+
+        .card .card-content p {
+            margin: 0;
+            font-size: 1.45rem;
+            color: #555555;
+        }
+    /*----3.a.Horizontal----*/
+    .card.horizontal .card-image img {
+        height: 100px;
+        width: 100px;
+    }
+
+    .card.horizontal {
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+    }
+
+        .card.horizontal.small .card-image,
+        .card.horizontal.medium .card-image,
+        .card.horizontal.large .card-image {
+            height: 100%;
+            max-height: none;
+            overflow: visible;
+        }
+
+        .card.horizontal .card-image img {
+            width: 150px;
+            height: 150px;
+            margin-right: 20px;
+        }
+
+        .card.horizontal .card-stacked {
+            -webkit-flex-direction: column;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            -webkit-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            position: relative;
+        }
+
+            .card.horizontal .card-stacked .card-content {
+                -webkit-flex-grow: 1;
+                -ms-flex-positive: 1;
+                flex-grow: 1;
+            }
+
+    .card .card-image {
+        position: relative;
+    }
+
+.zoom {
+    background-color: transparent;
+    transition: transform .2s;
+    margin: 0 auto;
+    justify-content:center;
+}
+
+    .zoom:hover {
+        -ms-transform: scale(1.5); /* IE 9 */
+        -webkit-transform: scale(1.5); /* Safari 3-8 */
+        transform: scale(1.5);
+    }

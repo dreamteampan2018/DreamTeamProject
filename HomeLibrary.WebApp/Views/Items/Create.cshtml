@@ -1,9 +1,8 @@
 ﻿@model HomeLibrary.DatabaseModel.Item
-
+@using System.Collections
 @{
     ViewData["Title"] = "Create";
 }
-
 <h4>Dodaj nową pozycje do biblioteki</h4>
 <hr />
 <div class="row">
@@ -15,18 +14,16 @@
                 <input asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ItemTypeId" class="control-label">Rodzaj pozycji</label>
 
+            @Html.DropDownListFor(Model=>Model.ItemTypeId,
+           new SelectList((IEnumerable)ViewData["TypeList"],"Value","Text"), "Typ pozycji",
+           new { @class = "form-control " })
 
-                <select asp-for="ItemTypeId" class="form-control" asp-items="ViewBag.ItemTypeId"></select>
-
-
-
-            </div>
             <div class="form-group">
                 <label asp-for="AuthorId" class="control-label">Autor/Twórca</label>
-                <select asp-for="AuthorId" class="form-control" asp-items="ViewBag.AuthorId"></select>
+                @Html.DropDownListFor(Model=>Model.AuthorId,
+                        new SelectList((IEnumerable)ViewData["AuthorList"],"Value","Text"), "Wybierz Autora",
+                         new { @class = "form-control " })
             </div>
             <div class="form-group">
                 <label asp-for="Description" class="control-label">Opis</label>
@@ -38,28 +35,33 @@
                 <input asp-for="YearPublishment" class="form-control" />
                 <span asp-validation-for="YearPublishment" class="text-danger"></span>
             </div>
-            <!--    
-     <div class="form-group">
-         <div class="checkbox">
-             <label>
-                 <input asp-for="Borrowed" /> @Html.DisplayNameFor(model => model.Borrowed)
-             </label>
-         </div>
-     </div>
-    <div class="form-group">
-         <label asp-for="CoverGuid" class="control-label"></label>
-         <input asp-for="CoverGuid" class="form-control" />
-         <span asp-validation-for="CoverGuid" class="text-danger"></span>
-     </div>
-        -->
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
             </div>
         </form>
+
+
+
     </div>
 </div>
 
-
+<div>
+    <form method="post" enctype="multipart/form-data" asp-controller="Items" asp-action="PostCoverToAzure">
+        <div class="form-group">
+            <div class="col-md-10">
+                <p>Wykorzystaj Azure</p>
+                <input type="file" name="files" />
+            </div>
+        </div>
+        <div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    <input type="submit" value="Upload" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
 
 
 <div>

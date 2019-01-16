@@ -1,9 +1,11 @@
 ﻿using HomeLibrary.DatabaseModel;
 using HomeLibrary.WebApp.Data;
 using HomeLibrary.WebApp.Repository.Interface;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace HomeLibrary.WebApp.Repository
@@ -42,6 +44,26 @@ namespace HomeLibrary.WebApp.Repository
             context.Authors.Remove(toDelete);
         }
 
+        public int SearchAuthorId (string authorName)
+        {
+            StringBuilder searchString = new StringBuilder();
+            searchString.Append("%");
+            searchString.Append(authorName);
+            searchString.Append("%");
+            var query = from a in context.Authors
+                        where EF.Functions.Like(a.AuthorName, searchString.ToString())
+                        select a;
+            if (query.Count() == 0)
+            {
+                return 0;
+            }
+            else
+            {
+                return query.FirstOrDefault().AuthorId;
+            }
+        }
+
+
        
 
         public async Task<Author> GetAuthorByIdAsync(int authorId)
@@ -57,6 +79,7 @@ namespace HomeLibrary.WebApp.Repository
         public Author InsertAuthor(Author author)
         {
             context.Authors.Add(author);
+            context.SaveChanges();
             return author;
         }
 

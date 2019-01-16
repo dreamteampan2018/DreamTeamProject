@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewData["Title"] = "SearchAuthor";
+}
+
+<h2>SearchAuthor</h2>
+@using (Html.BeginForm("SearchAuthor", "Search", FormMethod.Post))
+{
+
+    <div class="col-lg-3">
+        <label> Tytuł</label>
+        <input id="Author" name="Author" type="text" runat="server" style="width: 400px" placeholder="dowolny autor" />
+    </div>
+
+    <input type="submit" id="submitId" value="Wyszukaj" class="btn btn-success pull-left" />
+}
+

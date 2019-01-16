@@ -55,6 +55,7 @@ namespace HomeLibrary.WebApp.Repository
         public void InsertItemType(ItemType itemType)
         {
             context.ItemTypes.Add(itemType);
+            context.SaveChanges();
         }
 
         public async Task SaveAsync()

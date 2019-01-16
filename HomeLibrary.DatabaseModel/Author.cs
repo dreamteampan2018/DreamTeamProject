@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace HomeLibrary.DatabaseModel
@@ -9,5 +10,10 @@ namespace HomeLibrary.DatabaseModel
         public int AuthorId { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
+        [NotMapped]
+        public string AuthorName
+        {
+            get { return Name + " " + Surname; }
+        }
     }
 }

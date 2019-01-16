@@ -1,0 +1,16 @@
+﻿@model HomeLibrary.WebApp.HelperClass.SearchPosition
+@using System.Collections
+@{
+    ViewData["Title"] = "SearchType";
+}
+
+<h2>SearchType</h2>
+@using (Html.BeginForm("SearchType", "Search", FormMethod.Post))
+{
+    <div class="col-lg-3">
+        @Html.DropDownListFor(Model=>Model.TypeId,
+        new SelectList((IEnumerable)ViewData["TypeList"],"Value","Text"), "Typ pozycji",
+        new { @class = "form-control " })
+    </div>
+    <input type="submit" id="submitId" value="Wyszukaj" class="btn btn-success pull-left" />
+}

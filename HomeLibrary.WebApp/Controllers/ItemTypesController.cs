@@ -50,7 +50,7 @@ namespace HomeLibrary.WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-              //  _context.Add(itemType);
+                repository.InsertItemType(itemType);
                 await repository.SaveAsync();
                 return RedirectToAction(nameof(Index));
             }

@@ -1,50 +1,81 @@
 ﻿@model IEnumerable<HomeLibrary.DatabaseModel.Item>
-
 @{
     ViewData["Title"] = "Result";
 }
+<script type="text/javascript">
+    $(window).load(function () {
+        alert("asdsadas");
+    }
+        
+   // $('basicModal').load(function () {
+   //     alert("asdsadsadasd");
+   //     var myId = $(this).data('id');//get Id from data-id
+    //    alert(myId);
+      //  $('.modal-content').load("/Items/Details/" + myId); // load Edit page to modal content
+  //  });
+</script>
 
-<h2>Result</h2>
-<label>Tutaj będzie wynik</label>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ItemType)
-            </th>
-            
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.YearPublishment)
-            </th>
 
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Title)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ItemType.ItemTypeId)
-                </td>
-                
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.YearPublishment)
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<h2>Wynik wyszukiwania </h2>
+@if (Model.Count() == 0)
+{
+    <p> Nie znaleziono pozycji spełniających wymagane kryterum</p>
+}
+else if (Model.Count() > 0)
+{
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-offset-1 col-md-4 col-xs-12">
+                    <div class="card horizontal">
+                        <div class="card-image ">
+                            <img src="@item.CoverGuid" class="zoom">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                                    <a class="btn btn-circle-small  btn-success pull-right" asp-action="Edit" asp-route-id="@item.ItemId" data-toggle="tooltip" title="Edytuj">
+                                        <i class="glyphicon glyphicon-edit">
+                                        </i>
+                                    </a>
+                                    <a class="btn btn-circle-small  btn-warning pull-right" asp-action="Delete" asp-route-id="@item.ItemId" data-toggle="tooltip" title="Usuń">
+                                        <i class="glyphicon glyphicon-trash">
+                                        </i>
+                                    </a>
+                                }
+
+                                <h5>@item.Title</h5>
+                                @item.Author.Name @item.Author.Surname<br />
+                                <a class="IdInfo btn btn-primary" id="#btndetails" title="Add this item" data-toggle="modal" data-id="@item.ItemId" href="#basicModal">
+                                    Szczegoly
+                                </a>
+                                <br />
+
+                                <p><button class="btn btn-styled pull-right">Wypożycz</button></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+<div id="x"></div>
+<div class="modal fade" id="basicModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <p class="modal-title" id="myModalLabel">Szczegóły</p>
+            </div>
+            <div class="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

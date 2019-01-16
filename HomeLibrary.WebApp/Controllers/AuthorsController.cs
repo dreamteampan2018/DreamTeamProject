@@ -52,12 +52,11 @@ namespace HomeLibrary.WebApp.Controllers
         [Authorize]
         public async Task<IActionResult> Create([Bind("AuthorId,Name,Surname")] Author author)
         {
-           // if (ModelState.IsValid)
-           // {
-           //     _context.Add(author);
-            //    await _context.SaveChangesAsync();
-            //    return RedirectToAction(nameof(Index));
-           // }
+            if (ModelState.IsValid)
+            {
+                repository.InsertAuthor(author); 
+               return RedirectToAction(nameof(Index));
+            }
             return View(author);
         }
 

@@ -1,0 +1,95 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    List<string> ValueList = new List<string>();
+    List<string> ValueName = new List<string>();
+    List<string> ValuBackground = new List<string>();
+
+    Random random = new Random();
+
+
+    @foreach (var row in ViewData["MostTypeStat"] as IEnumerable<HomeLibrary.WebApp.HelperClass.MostTypeStatistics>)
+    {
+        ValueName.Add('"' + row.TypeName + '"' + ",");
+        ValueList.Add(row.TypeCount.ToString() + ",");
+        ValuBackground.Add('"' + "#" + random.Next(0, 100).ToString("00") + random.Next(0, 100).ToString("00") + random.Next(0, 100).ToString("00") + '"' + ",");
+
+    }
+    int countList = ValueList.Count();
+    ValueList[countList - 1] = ValueList[countList - 1].Remove(ValueList[countList - 1].Length - 1, 1);
+    ValueName[countList - 1] = ValueName[countList - 1].Remove(ValueName[countList - 1].Length - 1, 1);
+    ValuBackground[countList - 1] = ValuBackground[countList - 1].Remove(ValuBackground[countList - 1].Length - 1, 1);
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">Ulubiony wykres kołowy Kasi :D</h2>
+        <canvas id="barChart" width="400" height="400"></canvas>
+
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var chartDiv = $("#barChart");
+        var myChart = new Chart(chartDiv, {
+            type: 'pie',
+            data: {
+                labels: [
+                    @foreach (string row in ValueName)
+                       {
+                        @Html.Raw(@row.ToString());
+                      }
+               ],
+                datasets: [
+                    {
+                        data: [@foreach (string row in ValueList)
+{
+    @row.ToString();
+}
+                                                  ],
+                        backgroundColor: [
+                           @foreach (string row in ValuBackground)
+{
+    @Html.Raw(@row.ToString());
+}
+                        ]
+                    }]
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Pie Chart'
+                },
+                responsive: true,
+                maintainAspectRatio: false,
+            }
+        });
+    });
+</script>
+</html>
+
+
+<h2>Podgląd statystyk</h2>
+<div class="alert-danger">
+    <p> Ilość autorów w bazie:</p>@ViewData["AuthorsCount"]
+</div>
+<div class="alert-success">
+    <p>Stan wypożyczeń</p>@ViewData["BorrowedCountItem"]
+</div>
+<div class="alert-success">
+    <p>Popularność wypożyczeń wg nośnika</p>
+    @foreach (var row in ViewData["MostTypeStat"] as IEnumerable<HomeLibrary.WebApp.HelperClass.MostTypeStatistics>)
+    {
+
+        <Div>@row.TypeName : @row.TypeCount  </Div>
+        <br>
+
+    }
+
+</div>

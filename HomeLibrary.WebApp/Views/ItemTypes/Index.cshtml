@@ -1,35 +1,75 @@
 ﻿@model IEnumerable<HomeLibrary.DatabaseModel.ItemType>
 
 @{
-    ViewData["Title"] = "Lista wszystkich typów";
+    ViewData["Title"] = "Posiadamy w swojej kolekcji następujące typy nośników:";
 }
 
-<h2>Index</h2>
+<link rel="stylesheet" href="~/css/Authors.css" />
+<div class="panel panel-primary" id='headerAuthorTable'>
+    <table>
+        <tr class="panel-heading">
+            <td><h2>@ViewData["Title"] </h2></td>
+            <td>
+                <p>
+                </p>
+            </td>
+        </tr>
+    </table>
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ItemTypeId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ItemTypeId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ItemTypeId">Delete</a>
-            </td>
-        </tr>
+<div class="container" id="authorsTable">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <div class="col-lg-12">
+            <a class="btn btn-circle pull-right btn-success" asp-action="Create">
+                <i class="glyphicon glyphicon-plus">
+                                        </i>
+            </a>
+        </div>
+    }
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                            <div class="pull-right">
+                                <a class="btn btn-circle btn-success" asp-action="Edit" asp-route-id="@item.ItemTypeId">
+                                    <i class="glyphicon glyphicon-edit">
+                                        </i>
+                                 
+                                </a>
+
+                                <a class="btn btn-circle btn-info" asp-action="Details" asp-route-id="@item.ItemTypeId">
+                                    <i class="glyphicon glyphicon-comment">
+                                    </i>
+                                </a>
+
+                                <a class="btn btn-circle btn-warning" asp-action="Delete" asp-route-id="@item.ItemTypeId">
+                                    <i class="glyphicon glyphicon-trash">
+                                        </i>
+                                  
+                                </a>
+                             
+                            </div>
+                                }
+                            
+                        </td>
+                    </tr>
 }
-    </tbody>
-</table>
+</tbody>
+        </table>
+    </div>

@@ -24,15 +24,21 @@
         <div class="container">
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav" id="nav_headers">
-                    <li><a href="https://github.com/dreamteampan2018/DreamTeamProject"><i class="fab fa-github" ></i></a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index" class="naviButtons"><p>DreamTeam</p></a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Index" class="naviButtons"><p>Home</p></a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About" class="naviButtons"><p>About</p></a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact" class="naviButtons"><p>Contact</p></a></li>
                     <li><a asp-area="" asp-controller="Authors" asp-action="Index" class="naviButtons"><p>Authors</p></a></li>
                     <li><a asp-area="" asp-controller="ItemTypes" asp-action="Index" class="naviButtons"><p>Types</p></a></li>
                     <li><a asp-area="" asp-controller="Items" asp-action="Index" class="naviButtons"><p>Library</p></a></li>
-                    <li><a asp-area="" asp-controller="Search" asp-action="Index" class="naviButtons"><p>Search</p></a></li>
+                    <li class="dropdown">
+
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Search<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-area="" asp-controller="Search" asp-action="SearchTitle" class="naviButtons"><p>Search by title</p></a></li>
+                            <li><a asp-area="" asp-controller="Search" asp-action="SearchAuthor" class="naviButtons"><p>Search by author</p></a></li>
+                            <li><a asp-area="" asp-controller="Search" asp-action="SearchType" class="naviButtons"><p>Search by type</p></a></li>
+                        </ul>
+                    </li>
+                    <li><a asp-area="" asp-controller="Statistics" asp-action="Index">Statystyki</a></li>
                 </ul>
                 <partial name="_LoginPartial" />
             </div>
